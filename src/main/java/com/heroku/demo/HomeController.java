@@ -60,7 +60,7 @@ public class HomeController {
 //    }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String testPost(List<String> stringList) {
+    public String testPost(@RequestBody List<String> stringList) {
         return stringList.stream().collect(Collectors.joining(" "));
     }
 }
