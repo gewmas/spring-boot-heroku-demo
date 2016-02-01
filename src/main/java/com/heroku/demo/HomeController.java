@@ -22,9 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/")
@@ -43,6 +41,12 @@ public class HomeController {
         model.addAttribute("records", records);
         model.addAttribute("insertRecord", new Record());
         return "home";
+    }
+
+    @RequestMapping(value = "me/{name}", method = RequestMethod.GET)
+    public String me(@PathVariable("name") String name,
+                     @RequestParam("option") String option) {
+        return "Hello " + name + " " + option;
     }
 
     @RequestMapping(method = RequestMethod.POST)
